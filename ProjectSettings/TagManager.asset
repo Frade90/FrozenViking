@@ -10,6 +10,7 @@ TagManager:
   - AddMaxHealth
   - LevelTrigger
   - LevelEnd
+  - FallDeath
   layers:
   - Default
   - TransparentFX

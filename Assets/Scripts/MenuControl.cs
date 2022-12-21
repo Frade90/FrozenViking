@@ -12,4 +12,23 @@ public class MenuControl : MonoBehaviour
 
 
     }
+
+    public void Save()
+    {
+        //tämä ajetaan menusta, kun painetaan save
+
+        GameManager.manager.Save();
+    }
+
+    public void Load()
+    {
+        GameManager.manager.Load();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+
+    }
+
 }

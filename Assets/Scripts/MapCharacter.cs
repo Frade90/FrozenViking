@@ -10,7 +10,16 @@ public class MapCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(GameManager.manager.currentLevel  != "")
+        {
+
+
+            // kun map scene aukeaa, t‰m‰ if ajetaan jos tullaan jostain levelist‰ Mappiin
+            //currentlevel on jotain muut kuin tyhj‰. asennetaan pelaajalle uusi sijainti tiettyyn spawnpointtiin.
+            transform.position = GameObject.Find(GameManager.manager.currentLevel).transform.GetChild(0).transform.position;
+            //taso on p‰‰sty l‰pi. kutsutaan kyseisen tason cleared funktiota.
+            GameObject.Find(GameManager.manager.currentLevel).GetComponent<LoadLevel>().Cleared(true);
+        }
     }
 
     // Update is called once per frame
@@ -31,6 +40,7 @@ public class MapCharacter : MonoBehaviour
             //t‰m‰ ajetaan jos kartassa pelaaja osuu objektiin, jonka tag on "LevelTrigger"
             //haetaan Leveltrigger objektista LoadLevel scripti, ja katsotaan mik‰ on levelToLoad muuttujan arvo
             //ja k‰ynnistet‰‰n sen niminen Scene
+            GameManager.manager.currentLevel = collision.gameObject.name;
             SceneManager.LoadScene(collision.GetComponent<LoadLevel>().levelToLoad);
         }
     }
